@@ -48,7 +48,7 @@ public class Users {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = md5HashingService.encryptString(password);
 	}
 
 	public String getEmailId() {

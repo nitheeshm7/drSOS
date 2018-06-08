@@ -21,7 +21,7 @@ public class RegistrationController {
 	@Autowired
 	UserService userService;
 
-	@PostMapping("/createDoctor")
+	@PostMapping("/create")
 	public ResponseEntity<Object> createUser(@RequestBody Users user) {
 		System.out.println("Nitheesh  " + user.toString());
 		if (userService.checkUserAlreadyExist(user.getEmailId())) {
@@ -35,7 +35,7 @@ public class RegistrationController {
 
 	}
 
-	@PostMapping("/updateDoctorProfile")
+	@PostMapping("/updateProfile")
 	public ResponseEntity<Object> updateUserProfile(@RequestBody Users user) {
 
 		Users updatedUser = userRepository.save(user);
