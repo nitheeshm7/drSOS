@@ -1,12 +1,13 @@
-package com.drsos.onlinebooking;
+package com.doc.online;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OnlinebookingApplication {
+public class OnlineApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OnlinebookingApplication.class, args);
+		SpringApplication.run(OnlineApplication.class, args);
 	}
+	
 }
