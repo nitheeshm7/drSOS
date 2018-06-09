@@ -1,8 +1,11 @@
 package com.doc.online.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.doc.online.utilties.MD5HashingService;
 
@@ -12,6 +15,9 @@ public class Doctors {
 	MD5HashingService md5HashingService = new MD5HashingService();
 
 	@Id
+	@GenericGenerator(name = "seq_doctorId", strategy = "com.doc.online.idgenerators.DoctorIdGenerator")
+	@GeneratedValue(generator = "seq_doctorId")
+	private String doctorId;
 	private String regNo;
 	private String docName;
 	private String docEmail;
@@ -25,6 +31,14 @@ public class Doctors {
 	private String state;
 	private String country;
 	private boolean active;
+
+	public String getDoctorId() {
+		return doctorId;
+	}
+
+	public void setDoctorId(String doctorId) {
+		this.doctorId = doctorId;
+	}
 
 	public String getRegNo() {
 		return regNo;

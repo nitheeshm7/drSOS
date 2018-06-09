@@ -3,8 +3,11 @@ package com.doc.online.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.doc.online.utilties.MD5HashingService;
 
@@ -14,9 +17,12 @@ public class Users {
 	@Transient
 	MD5HashingService md5HashingService = new MD5HashingService();
 
+	@Id
+	@GenericGenerator(name = "seq_userId", strategy = "com.doc.online.idgenerators.UserIdGenerator")
+	@GeneratedValue(generator = "seq_userId")
+	private String userId;
 	private String userName;
 	private String password;
-	@Id
 	private String emailId;
 	private String phoneNo;
 	private boolean active;
@@ -34,6 +40,14 @@ public class Users {
 	private String country;
 	private String oldPassword1;
 	private String oldPassword2;
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public String getUserName() {
 		return userName;

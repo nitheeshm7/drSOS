@@ -3,12 +3,14 @@ package com.doc.online;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalTime;
 
 public class Test {
 	
 	public static void main(String[] args) {
 		Test test = new Test();
-		test.connectdb();
+//		test.connectdb();
+		System.out.println(LocalTime.now());
 	}
 
 	public void connectdb(){
