@@ -1,4 +1,4 @@
-package com.doc.online.beans;
+package com.doc.online.request.beans;
 
 import com.doc.online.utilties.MD5HashingService;
 

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.doc.online.beans.LoginBean;
+import com.doc.online.request.beans.LoginBean;
 import com.doc.online.service.UserService;
 
 @RestController
