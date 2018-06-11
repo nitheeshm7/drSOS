@@ -1,5 +1,6 @@
 package com.doc.online.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -40,6 +41,8 @@ public class Users {
 	private String country;
 	private String oldPassword1;
 	private String oldPassword2;
+	private String otp;
+	private LocalDateTime otpExpiry;
 
 	public String getUserId() {
 		return userId;
@@ -199,6 +202,22 @@ public class Users {
 
 	public void setOldPassword2(String oldPassword2) {
 		this.oldPassword2 = oldPassword2;
+	}
+
+	public String getOtp() {
+		return otp;
+	}
+
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
+
+	public LocalDateTime getOtpExpiry() {
+		return otpExpiry;
+	}
+
+	public void setOtpExpiry(LocalDateTime otpExpiry) {
+		this.otpExpiry = otpExpiry;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.doc.online.serviceImpl;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,15 @@ public class UserServiceImpl implements UserService {
 		boolean check = false;
 		Users users = userRepository.loginWithPhoneNo(phoneNo);
 		if (users != null && users.getPassword().equals(password)) {
+			check = true;
+		}
+		return check;
+	}
+
+	@Override
+	public boolean validateOTP(String otp, Users user) {
+		boolean check = false;
+		if (otp.equals(user.getOtp()) && user.getOtpExpiry().isBefore(LocalDateTime.now())) {
 			check = true;
 		}
 		return check;

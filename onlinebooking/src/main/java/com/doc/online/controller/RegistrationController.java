@@ -11,6 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.doc.online.entity.Users;
 import com.doc.online.repository.UserRepository;
+import com.doc.online.request.beans.OTPBean;
 import com.doc.online.service.UserService;
 
 @RestController
@@ -37,11 +38,22 @@ public class RegistrationController {
 
 	@PostMapping("/updateProfile")
 	public ResponseEntity<Object> updateUserProfile(@RequestBody Users user) {
-
 		Users updatedUser = userRepository.save(user);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{userName}")
 				.buildAndExpand(updatedUser.getUserName()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+
+	@PostMapping("/validateOTP")
+	public ResponseEntity<Object> validateOTP(@RequestBody OTPBean otpBean) {
+		ResponseEntity<Object> responseEntity = ResponseEntity.notFound().build();
+		Users otpUser = userRepository.findByPhoneNo(otpBean.getPhoneNo());
+		if (otpUser != null) {
+			if (userService.validateOTP(otpBean.getOtp(), otpUser)) {
+				responseEntity = ResponseEntity.ok().build();
+			}
+		}
+		return responseEntity;
 	}
 
 }
